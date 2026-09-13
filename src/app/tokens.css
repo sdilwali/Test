@@ -1,0 +1,123 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Dibs tokens.
+
+   The visuals derive from the Organic design system, which ships as a LIGHT
+   theme. Dibs is dark-first, so every surface colour is taken from Organic's
+   tonal ramps at dark steps rather than from its light role colours. The
+   resolved values below come from the design handoff and are authoritative —
+   do not re-derive them from Organic's light roles.
+
+   Semantic rule, enforced throughout:
+     terracotta (--accent-*)  = time running out / uncovered / conflict
+     sage       (--sage-*)    = covered / confirmed / done
+   Neither is ever used decoratively.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  color-scheme: dark;
+
+  /* — Organic tonal ramps, verbatim ————————————————————————————————— */
+  --neutral-100: #f9f4ed;
+  --neutral-200: #eee7db;
+  --neutral-300: #dcd3c4;
+  --neutral-400: #c0b6a5;
+  --neutral-500: #a19786;
+  --neutral-600: #82796a;
+  --neutral-700: #645c50;
+  --neutral-800: #474238;
+  --neutral-900: #2e2b25;
+
+  --accent-100: #fff2eb;
+  --accent-200: #ffe1d0;
+  --accent-300: #ffc6a5;
+  --accent-400: #f6a06b;
+  --accent-500: #d67f48;
+  --accent-600: #b2622d;
+  --accent-700: #8c491a;
+  --accent-800: #643312;
+  --accent-900: #402310;
+
+  --sage-100: #f0fae1;
+  --sage-200: #e1eecc;
+  --sage-300: #ccdbb2;
+  --sage-400: #aebf92;
+  --sage-500: #8fa073;
+  --sage-600: #728157;
+  --sage-700: #56633f;
+  --sage-800: #3d472b;
+  --sage-900: #272e1b;
+
+  /* — Grounds and surfaces (derived dark steps) ——————————————————————— */
+  --ground: #1b1916;
+  --ground-open: #1d1a16; /* Race Mode once the window is open */
+  --desk: #171613; /* outside the app frame */
+  --surface-raised: #231f1b; /* cards, chips, list rows */
+  --surface-sunken: #1c1a17; /* source-email quote block */
+  --surface-alt: #211e1a; /* secondary rows, inputs */
+  --surface-alt-2: #221f1b;
+  --surface-alt-3: #2a2621; /* comparison tiles */
+
+  /* — Rules ————————————————————————————————————————————————————————— */
+  --hairline: #2b2823; /* dense cell/row rules */
+  --divider: var(--neutral-800); /* section rules, inactive borders */
+  --divider-strong: var(--neutral-700); /* secondary button borders */
+
+  /* — Ink ——————————————————————————————————————————————————————————— */
+  --ink: var(--neutral-100); /* headings, values */
+  --ink-2: var(--neutral-200); /* body on surfaces */
+  --ink-3: var(--neutral-300); /* paragraph copy */
+  --muted: var(--neutral-400); /* secondary text */
+  --muted-2: var(--neutral-500); /* labels, metadata */
+  --muted-3: var(--neutral-600); /* deprioritised ("Later") */
+  --faint: var(--neutral-700); /* "Not set", disabled */
+
+  /* — Accent tints (derived) ————————————————————————————————————————— */
+  --accent-tint: #3a2317; /* active nav, kid tab, race row */
+  --accent-tint-2: #2a1f16; /* critical field, address block */
+  --accent-tint-3: #33231a; /* gap cells */
+  --accent-rule: #4a3524; /* rules inside accent-tinted cards */
+  --on-accent: #1b1712; /* text on accent-500 fills */
+  --on-accent-dim: #54301a; /* sub-label on accent-500 fills */
+
+  /* — Sage tints (derived) ——————————————————————————————————————————— */
+  --sage-tint: #1f2219; /* covered cells, confirmed states */
+  --sage-tint-2: #262a20; /* partial cells */
+  --on-sage: #20241a; /* text on sage-400 fills */
+
+  /* — Neutral marks —————————————————————————————————————————————————— */
+  --mark-missed: #332e28;
+  --ring-track: #3b3630;
+
+  /* — Type ——————————————————————————————————————————————————————————— */
+  /* --font-heading / --font-body are injected by next/font in layout.tsx.
+     Caprasimo is the app's voice: screen titles, result titles, primary
+     button labels, "Window open".
+     The countdown is deliberately NOT Caprasimo — a rounded display face is
+     the wrong instrument for a figure read half-awake at arm's length in low
+     light. It is Figtree 700 with tabular numerals. */
+
+  /* — Layout ————————————————————————————————————————————————————————— */
+  --gutter: 20px;
+
+  /* — Radii (Organic's over-rounded direction) ——————————————————————— */
+  --r-pill: 999px;
+  --r-cta: 24px;
+  --r-review: 22px;
+  --r-card: 20px;
+  --r-detail: 18px;
+  --r-chip: 16px;
+  --r-row: 14px;
+  --r-bar: 12px;
+  --r-tick: 3px;
+
+  /* — Motion ————————————————————————————————————————————————————————
+     The motion budget for the whole app is three things: the breathing
+     "RACE MODE" label, the 0.5s rise into the open state, and the
+     zero-crossing sequence. Everything else is still, by design — the
+     stillness is what makes the crossing land. */
+  --ease-cta: cubic-bezier(0.2, 0.85, 0.15, 1);
+  --ease-scale: cubic-bezier(0.2, 0.9, 0.1, 1);
+}
+
+/* No drop shadows anywhere inside the app. Depth comes from surface value
+   steps and hairlines. (The phone bezel has one; that's frame chrome.) */

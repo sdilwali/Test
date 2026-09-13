@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#1b1916"/>
+  <!-- The countdown ring at the moment it completes: the product's signature
+       mark, and geometry only, so the icon never waits on a webfont. The hand
+       stands at twelve because that is the second this app exists for. -->
+  <circle cx="256" cy="256" r="150" fill="none" stroke="#3b3630" stroke-width="20"/>
+  <circle cx="256" cy="256" r="150" fill="none" stroke="#f6a06b" stroke-width="28"
+          stroke-linecap="round" stroke-dasharray="942" stroke-dashoffset="118"
+          transform="rotate(-90 256 256)"/>
+  <rect x="241" y="128" width="30" height="146" rx="15" fill="#f9f4ed"/>
+  <circle cx="256" cy="256" r="26" fill="#f9f4ed"/>
+</svg>

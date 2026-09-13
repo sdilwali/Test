@@ -1,0 +1,180 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Kid profile.
+
+   A long form of unglamorous fields, entered once. The payoff has to be
+   visible while she is filling it in, which is what the "ready in race mode"
+   card is for — it shows what this tedium buys at 5:59 a.m.
+
+   Partial completion is a normal state. No red, no nagging, no completion
+   badgering. A blank is only ever annotated when a window she is actually
+   tracking is waiting on it.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.kidTabs {
+  display: flex;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.kidTab {
+  flex: 1;
+  min-height: 44px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--divider);
+  background: transparent;
+  color: var(--muted-2);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.kidTabActive {
+  background: var(--accent-tint);
+  border-color: var(--accent-700);
+  color: var(--accent-300);
+}
+
+/* ── Ready in race mode ────────────────────────────────────────────────────
+   The count, the lit chips and the note below all derive from one field
+   array (src/lib/kid-fields.ts). They are structurally incapable of
+   disagreeing, which matters because this card is the reason to keep filling
+   the form.
+   ──────────────────────────────────────────────────────────────────────── */
+
+.ready {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--sage-700);
+  border-radius: var(--r-detail);
+  background: var(--sage-tint);
+}
+
+.readyHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.readyLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sage-400);
+}
+
+.readyCount {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sage-300);
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 12px;
+}
+
+.chip {
+  padding: 4px 9px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--sage-700);
+  background: var(--sage-900);
+  color: var(--sage-300);
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.chipDim {
+  border-color: var(--divider);
+  background: transparent;
+  color: var(--faint);
+}
+
+.readyNote {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.readyNoteBlocking {
+  color: var(--accent-400);
+  font-weight: 600;
+}
+
+/* ── Sections ───────────────────────────────────────────────────────────── */
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 24px 0 2px;
+}
+
+.sectionName {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.sectionCount {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted-3);
+}
+
+.sectionCountDone {
+  color: var(--sage-400);
+}
+
+.fieldRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 46px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--hairline);
+  text-align: left;
+}
+
+.fieldKey {
+  flex: 0 0 auto;
+  font-size: 13px;
+  color: var(--muted-2);
+}
+
+.fieldRight {
+  flex: 1;
+  min-width: 0;
+  text-align: right;
+}
+
+.fieldValue {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fieldUnset {
+  color: var(--faint);
+}
+
+/* Shown only when a tracked window needs this blank. Otherwise a blank says
+   nothing at all. */
+.fieldNeed {
+  display: block;
+  margin-top: 2px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--accent-400);
+}

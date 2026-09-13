@@ -1,0 +1,275 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Onboarding.
+
+   Three things have to land: the forwarding address, the first kid, and
+   installing to the home screen. That last one is a technical requirement
+   that has to be SOLD, not explained — skipping it means missing alerts, and
+   the screen says so plainly rather than hiding the cost behind a "Skip".
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding: calc(env(safe-area-inset-top) + 20px) var(--gutter)
+    calc(20px + env(safe-area-inset-bottom));
+  background: var(--ground);
+}
+
+.progress {
+  display: flex;
+  gap: 4px;
+}
+
+.segment {
+  flex: 1;
+  height: 3px;
+  border-radius: var(--r-tick);
+  background: var(--divider);
+}
+
+.segmentFilled {
+  background: var(--accent-400);
+}
+
+.step {
+  margin-top: 18px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.title {
+  margin-top: 10px;
+  font-family: var(--font-heading);
+  font-size: 31px;
+  line-height: 1.08;
+  color: var(--ink);
+}
+
+.body {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.content {
+  flex: 1;
+}
+
+/* ── Step 1: the address ────────────────────────────────────────────────── */
+
+.address {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 16px;
+  border: 2px solid var(--accent-600);
+  border-radius: var(--r-card);
+  background: var(--accent-tint-2);
+  text-align: left;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.addressCopied {
+  border-color: var(--sage-400);
+  background: var(--sage-tint);
+}
+
+.addressValue {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--accent-300);
+  word-break: break-all;
+}
+
+.addressCopied .addressValue {
+  color: var(--sage-300);
+}
+
+.addressTag {
+  display: block;
+  margin-top: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-600);
+}
+
+.addressCopied .addressTag {
+  color: var(--sage-400);
+}
+
+.numbered {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.numberedRow {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.numeral {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--divider-strong);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.numberedText {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-3);
+}
+
+/* ── Step 2: first kid ──────────────────────────────────────────────────── */
+
+.field {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 8px;
+  padding: 0 14px;
+  border: 1px solid var(--divider-strong);
+  border-radius: var(--r-chip);
+  background: var(--surface-alt);
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.field::placeholder {
+  color: var(--muted-3);
+}
+
+.sageNote {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: var(--r-chip);
+  background: var(--sage-tint);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--sage-300);
+}
+
+/* ── Step 3: install ────────────────────────────────────────────────────── */
+
+.whyCard {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid var(--accent-700);
+  border-radius: var(--r-card);
+  background: linear-gradient(160deg, #3a2317, #231f1b);
+}
+
+.whyLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-400);
+}
+
+.whyBody {
+  margin-top: 8px;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+/* The argument is carried visually: two tiles side by side, one of them
+   obviously the one you want. */
+.compare {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.tile {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--r-chip);
+  background: var(--surface-alt-3);
+}
+
+.tileWin {
+  background: var(--accent-500);
+}
+
+.tileLabel {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.tileWin .tileLabel {
+  color: var(--on-accent-dim);
+}
+
+.tileHead {
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.tileWin .tileHead {
+  color: var(--on-accent);
+}
+
+.tileSub {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--muted-3);
+}
+
+.tileWin .tileSub {
+  color: var(--on-accent-dim);
+}
+
+/* ── Actions ────────────────────────────────────────────────────────────── */
+
+.actions {
+  margin-top: 24px;
+}
+
+.cta {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 56px;
+  border-radius: var(--r-chip);
+  background: var(--accent-500);
+  color: var(--on-accent);
+  font-family: var(--font-heading);
+  font-size: 17px;
+}
+
+/* Honest about what skipping costs, rather than a quiet grey "Later". */
+.skip {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 6px;
+  font-size: 13.5px;
+  color: var(--muted-2);
+}

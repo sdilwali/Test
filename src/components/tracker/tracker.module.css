@@ -1,0 +1,354 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Tracker.
+
+   The whole screen turns on one idea: "opens in 4 hours" and "opens in 3
+   months" must not look the same. Urgency is encoded STRUCTURALLY — height,
+   scale, weight, density and rule strength all decay as the window recedes —
+   rather than by a coloured dot. Read the five groups top to bottom and the
+   type gets smaller, the padding tighter, the rules fainter, until "Later" is
+   a plain list.
+
+   Nothing on this screen animates. The stillness here is what makes the
+   Race Mode crossing land.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Proximity ruler ────────────────────────────────────────────────────────
+   Fourteen ticks whose heights encode the density of upcoming windows over
+   roughly the next 90 days. It is a sparkline for the season, not a control.
+   ──────────────────────────────────────────────────────────────────────── */
+
+.ruler {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 34px;
+  flex: 0 0 auto;
+}
+
+.tick {
+  width: 5px;
+  border-radius: var(--r-tick);
+  background: var(--divider-strong);
+}
+
+.tickToday {
+  background: var(--accent-400);
+}
+
+.tickSoon {
+  background: var(--accent-700);
+}
+
+/* ── Open now ──────────────────────────────────────────────────────────────
+   The only group that gets cards, and the only one with a left edge. The lead
+   row is the race entry.
+   ──────────────────────────────────────────────────────────────────────── */
+
+.raceCard {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-radius: var(--r-card);
+  border: 1px solid var(--accent-700);
+  border-left: 6px solid var(--accent-400);
+  background: linear-gradient(105deg, #3a2317, #241f1a);
+  padding: 14px 16px;
+}
+
+.raceCard + .openRow,
+.openRow + .openRow {
+  margin-top: 8px;
+}
+
+.openRow {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-radius: var(--r-card);
+  border: 1px solid var(--divider);
+  border-left: 6px solid var(--accent-500);
+  background: var(--surface-raised);
+  padding: 12px 16px;
+}
+
+.openTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.raceTitle {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.openTitle {
+  font-size: 17.5px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.raceCountdown {
+  flex: 0 0 auto;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--accent-400);
+  text-align: right;
+}
+
+.openCountdown {
+  flex: 0 0 auto;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--accent-400);
+  text-align: right;
+}
+
+.countdownCaption {
+  display: block;
+  margin-top: 4px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-600);
+}
+
+.openMeta {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.raceFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--accent-rule);
+}
+
+.raceEnter {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-300);
+}
+
+.racePrep {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sage-400);
+}
+
+/* ── This week ─────────────────────────────────────────────────────────────
+   The cards stop here. Rows on full-strength rules, still comfortably padded.
+   ──────────────────────────────────────────────────────────────────────── */
+
+.weekRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.weekTitle {
+  display: block;
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.weekMeta {
+  display: block;
+  margin-top: 3px;
+  font-size: 12.5px;
+  color: var(--muted-2);
+}
+
+.weekRight {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.weekTime {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--accent-400);
+}
+
+.weekKind {
+  display: block;
+  margin-top: 3px;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-3);
+}
+
+/* ── This month ────────────────────────────────────────────────────────────
+   Tighter padding, a fainter rule, the ink steps back, and the relative time
+   is replaced by a bare date — at this distance "in 18 days" means nothing.
+   ──────────────────────────────────────────────────────────────────────── */
+
+.monthRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.monthTitle {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink-2);
+}
+
+.monthMeta {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: var(--muted-3);
+}
+
+.monthDate {
+  flex: 0 0 auto;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+/* ── Later ─────────────────────────────────────────────────────────────────
+   No rules at all, one line each. Reads as a list, not as cards — which is
+   the correct amount of attention for something three months out.
+   ──────────────────────────────────────────────────────────────────────── */
+
+.laterRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  padding: 6px 0;
+}
+
+.laterTitle {
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--muted-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.laterDate {
+  flex: 0 0 auto;
+  font-size: 11.5px;
+  color: var(--muted-3);
+}
+
+/* ── Needs your info ───────────────────────────────────────────────────────
+   Pulled to the bottom and drawn in sage, not accent: this is not urgent, it
+   is unfinished. The dashed border says "incomplete" without nagging.
+   ──────────────────────────────────────────────────────────────────────── */
+
+.needsCard {
+  margin-top: 26px;
+  padding: 16px;
+  border: 1px dashed var(--sage-600);
+  border-radius: var(--r-detail);
+  background: var(--sage-tint);
+}
+
+.needsLabel {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sage-400);
+}
+
+.needsTitle {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* The consequence, not the task. "Tamarack blocks checkout without it" is
+   what makes this worth tapping. */
+.needsBody {
+  margin-top: 6px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-3);
+}
+
+.needsAction {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 14px;
+  padding: 0 20px;
+  border-radius: var(--r-pill);
+  background: var(--sage-400);
+  color: var(--on-sage);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ── Empty state ───────────────────────────────────────────────────────────
+   An invitation, per the brief: say what to do, with the address right there.
+   Never "No windows yet".
+   ──────────────────────────────────────────────────────────────────────── */
+
+.empty {
+  margin-top: 40px;
+  padding: 24px 20px;
+  border: 1px dashed var(--divider);
+  border-radius: var(--r-detail);
+  text-align: center;
+}
+
+.emptyTitle {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  color: var(--ink);
+}
+
+.emptyBody {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.emptyAddress {
+  display: block;
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent-400);
+  word-break: break-all;
+}

@@ -1,0 +1,43 @@
+/* Bottom tab bar. Present on the four planning surfaces; hidden entirely in
+   Race Mode and Onboarding, both of which own the whole screen. */
+
+.bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  border-top: 1px solid var(--hairline);
+  background: var(--ground);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-height: 52px;
+  padding-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted-2);
+}
+
+.tabActive {
+  color: var(--accent-400);
+  font-weight: 700;
+}
+
+/* A 3px tick rather than a filled pill — the nav should register without
+   competing with the urgency signals in the list above it. */
+.tick {
+  width: 18px;
+  height: 3px;
+  border-radius: var(--r-tick);
+  background: transparent;
+}
+
+.tabActive .tick {
+  background: var(--accent-400);
+}

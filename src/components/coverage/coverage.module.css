@@ -1,0 +1,293 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Coverage grid.
+
+   This replaces a spreadsheet, and it is allowed to feel like a better
+   spreadsheet rather than pretending to be something else: dense, scannable,
+   honest. Resist turning it into cards.
+
+   Gaps are the information, so gaps are the loudest thing on screen — tinted
+   AND hatched, against quiet sage for the weeks that are handled.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.head {
+  padding: 0 var(--gutter);
+}
+
+.stats {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+/* The gap count leads, because gaps are the information. */
+.gapCount {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--accent-400);
+}
+
+.range {
+  font-size: 13px;
+  color: var(--muted-2);
+}
+
+/* ── Table ──────────────────────────────────────────────────────────────── */
+
+.tableWrap {
+  margin-top: 18px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.table {
+  border-collapse: collapse;
+  /* The kid column is sticky, so the table must not shrink to fit. */
+  width: max-content;
+}
+
+.weekHead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--ground);
+}
+
+.kidHead,
+.kidCell {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  width: 70px;
+  min-width: 70px;
+  padding: 0 8px;
+  background: var(--ground);
+  text-align: left;
+}
+
+.kidHead {
+  z-index: 3;
+}
+
+.weekLabel {
+  width: 62px;
+  min-width: 62px;
+  padding: 8px 4px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  text-align: center;
+  border-left: 1px solid var(--hairline);
+}
+
+.kidName {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.row {
+  border-bottom: 1px solid var(--divider);
+}
+
+.cell {
+  position: relative;
+  width: 62px;
+  min-width: 62px;
+  height: 74px;
+  padding: 7px 5px;
+  border-left: 1px solid var(--hairline);
+  vertical-align: top;
+}
+
+.cellLabel {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cellSub {
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  bottom: 7px;
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.covered {
+  background: var(--sage-tint);
+}
+
+.covered .cellLabel {
+  color: var(--sage-300);
+}
+
+.covered .cellSub {
+  color: var(--sage-600);
+}
+
+.partial {
+  background: var(--sage-tint-2);
+}
+
+.partial .cellLabel {
+  color: var(--sage-400);
+}
+
+.partial .cellSub {
+  color: var(--sage-600);
+}
+
+/* Tinted and hatched. One treatment would be a state; two is an alarm. */
+.gap {
+  background-color: var(--accent-tint-3);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(246, 160, 107, 0.24) 0 4px,
+    transparent 4px 9px
+  );
+}
+
+.gap .cellLabel {
+  color: var(--accent-400);
+}
+
+.gap .cellSub {
+  color: var(--accent-600);
+}
+
+.conflictFlag {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  border-radius: var(--r-pill);
+  background: var(--accent-400);
+  color: #2b1a0d;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ── Cost ───────────────────────────────────────────────────────────────── */
+
+.costRow {
+  border-top: 1px solid var(--divider);
+}
+
+.costLabel {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-3);
+}
+
+.costCell {
+  width: 62px;
+  min-width: 62px;
+  padding: 10px 5px;
+  border-left: 1px solid var(--hairline);
+  text-align: center;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.costEmpty {
+  color: var(--faint);
+}
+
+.total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0 var(--gutter);
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--divider);
+}
+
+.totalLabel {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.totalValue {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ── Conflicts ──────────────────────────────────────────────────────────── */
+
+.conflicts {
+  padding: 0 var(--gutter);
+  margin-top: 26px;
+}
+
+.conflictsLabel {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-400);
+}
+
+.conflictRow {
+  display: flex;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.conflictTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.conflictBody {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+/* ── Legend ─────────────────────────────────────────────────────────────── */
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 0 var(--gutter);
+  margin-top: 20px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted-2);
+}
+
+.swatch {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+}
