@@ -59,7 +59,14 @@ export function seal<T>(value: T): Pii<T> {
  * Anything else — a prompt, an analytics event, a log line, a third party —
  * has no entry here, and adding one should be an argued change.
  */
-export type RevealReason = "race-mode-copy" | "profile-render" | "export";
+export type RevealReason =
+  | "race-mode-copy"
+  | "profile-render"
+  | "export"
+  /** Handing the value to the field-encryption codec on its way to Postgres.
+   *  The plaintext exists only inside that call; what reaches the driver is
+   *  ciphertext. See src/db/crypto.ts. */
+  | "encrypt-at-rest";
 
 export function reveal<T>(boxed: Pii<T>, _reason: RevealReason): T {
   return boxed[piiValue];
